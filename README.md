@@ -27,8 +27,8 @@ and executing the scripts there.
 
 
 ### Lecture 1
-- [Intro](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/lectures/Day1/Intro/Slides/slides.pdf)
-- [Getting started on a supercomputer](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/lectures/Day1/Lecture1/Slides/slides.pdf)
+- [Intro](https://mldl_fzj.pages.jsc.fz-juelich.de/juhaicu/jsc_public/sharedspace/teaching/intro_scalable_deep_learning/course-material-may-2023/#/title-slide)
+- [Getting started on a supercomputer](https://mldl_fzj.pages.jsc.fz-juelich.de/juhaicu/jsc_public/sharedspace/teaching/intro_scalable_deep_learning/course-material-may-2023/01-access-machines.html#/title-slide)
   - Content: Stefan Kesselheim
 
 ### Tutorial 1
@@ -37,7 +37,7 @@ and executing the scripts there.
   - Content supervisor: Stefan Kesselheim
 
 ### Lecture 2
-- [Supercomputer architecture and MPI Primer](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/lectures/Day1/Lecture2/Slides/slides.pdf)
+- [Supercomputer architecture and MPI Primer](https://mldl_fzj.pages.jsc.fz-juelich.de/juhaicu/jsc_public/sharedspace/teaching/intro_scalable_deep_learning/course-material-may-2023/02-mpi.html#/title-slide)
   - Content: Stefan Kesselheim
 
 ### Tutorial 2
@@ -78,7 +78,7 @@ and executing the scripts there.
   - Content supervisor: Jenia Jitsev
 
 ### Lecture 2
-- [Is My Code Fast? Performance Analysis](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/lectures/Day3/Lecture2/Slides/Lecture_Slides.pdf)
+- [Is My Code Fast? Performance Analysis](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/lectures/Day3/Lecture2/Slides)
   - Content: Stefan Kesselheim
 
 ### Tutorial 2:
