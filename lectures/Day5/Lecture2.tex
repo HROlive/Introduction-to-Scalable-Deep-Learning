@@ -1,0 +1,94 @@
+\documentclass[t, 14pt, aspectratio=1610]{beamer}
+ % align text inside frame to t=top, b=bottom, c=center
+ % 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt available as text font
+ % select your aspect ratio 4:3=43, 16:9=169, 16:10=1610
+
+\usetheme{Juelich}
+
+%\usetheme{default}
+%\usecolortheme{beaver}
+
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{:}
+\setbeamertemplate{slide counter}[showall]
+\setbeamercolor{code}{fg=black,bg=fzjblue!10}
+\setbeamercolor{prototype}{fg=black,bg=fzjgreen!20}
+
+\setbeamertemplate{footline}{%
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{-1cm}\small\insertframenumber{}/\inserttotalframenumber}
+
+
+% \setbeamertemplate{footer element1}[default][\insertsection]%
+
+\usepackage{graphics}
+\newcommand{\gfxpath}{../images}
+
+\usepackage[ngerman,english]{babel}
+%\selectlanguage{ngerman}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% =====================================================
+%  packages / definitions needed by pandoc
+%
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{framed}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[warn]{textcomp}
+% package listings important for code highlighting !
+\usepackage{listings}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%\renewcommand{\emph}[1]{\structure{#1}}
+
+\renewcommand{\thefootnote}{}
+
+% AUTHOR AND TITLE FOR TITLE PAGE
+\author[M. Cherti]{Mehdi Cherti}
+\institute[JSC]{Cross Sectional Team Deep Learning, Helmholtz AI @ JSC}
+\date{2021-05-07}
+\title{Day 5: Advanced Generative Adversarial Networks (GANs)}
+% \subtitletest{}
+
+%\AtBeginPart{%
+%  \subtitle{\partname}
+%  \makepart
+%  \begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents[hideallsubsection]
+%  \end{frame}
+%}
+
+%\AtBeginSection{%
+%  \subtitle{\sectionname}
+%  \begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+% -- INCLUDE BACKGROUND GRAPHIC FOR TITLE PAGE
+% \titlegraphic{\includegraphics[width=\paperwidth]{../Abbildungen/juwels_cluster_booster_banner}}
+
+
+\begin{document}
+% Titelseite
+\fzjset{title page=image}
+
+%\fzjset{title page=text}
+\maketitle
+
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents
+%\end{frame}
+
+%% pandoc generated slides
+\include{Lecture2_content}
+
+\end{document}

@@ -1,0 +1,138 @@
+% Latex-Beamer Template Research Centre Juelich
+% version 18.12
+% please report any problems to i.kabadshow@fz-juelich.de
+% this version does support pdflatex, xelatex and lualatex
+%
+\ProvidesPackage{beamerthemeJuelich}%
+           [2018/12/14 v18.12
+            Research Centre Juelich Beamer Template]%
+
+\RequirePackage{ifluatex,ifxetex,ifpdf}
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\RequirePackage{textcase}
+\RequirePackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{external}
+
+\ifluatex
+  \RequirePackage{microtype}
+  \RequirePackage{fontspec}
+  \setmainfont{LiberationSans}
+  \setsansfont{LiberationSans}
+  \setmonofont{LiberationMono}
+\else\ifxetex
+  \RequirePackage{fontspec}
+  \setmainfont{LiberationSans}
+  \setsansfont{LiberationSans}
+  \setmonofont{LiberationMono}
+\else
+  \RequirePackage{helvet}
+  \RequirePackage{microtype}
+\fi\fi
+
+
+
+\newcommand{\fzjset}[1]{\pgfkeys{/beamerfzj/.cd,#1}}
+
+\pgfkeys{/beamerfzj/.cd,
+  .search also={
+    /beamerfzj/inner,
+    /beamerfzj/outer,
+    /beamerfzj/color,
+    /beamerfzj/font,
+  }
+}
+
+\pgfkeys{/beamerfzj/.cd,
+  pages layout/.code={%
+        \usepackage{pgf}
+        \usepackage{pgfpages}
+        \pgfpagesuselayout{#1}[a4paper,border shrink=5mm]
+
+        \pgfpageslogicalpageoptions{1}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{2}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{3}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{4}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{5}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{6}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{7}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{8}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{9}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{10}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{11}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{12}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{13}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{14}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{15}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+        \pgfpageslogicalpageoptions{16}{border code=\pgfsetlinewidth{0.4pt}\pgfstroke}
+  }%
+}
+
+\mode<presentation>
+
+% Juelich specific definitions
+
+\deftranslation[]{SlideName}{Slide}
+\deftranslation[to=German]{SlideName}{Folie}
+
+\deftranslation[]{HelmholtzBanner}{Member of the Helmholtz Association}
+\deftranslation[to=German]{HelmholtzBanner}{Mitglied der Helmholtz-Gemeinschaft}
+
+\usefonttheme{Juelich}
+\usecolortheme{Juelich}
+\useinnertheme{Juelich}
+\useoutertheme{Juelich}
+
+% default settings for title, part and section pages
+\fzjset{
+  title=allcaps,
+  subtitle=regular,
+  part=regular,
+  frametitle=allcaps,
+  compat mode=disabled,
+}
+
+\mode<all>
+
+% define progressbar
+\makeatletter
+
+\newlength{\fzj@progressinheadfoot}
+\newlength{\fzj@progressinheadfoot@linewidth}
+\setlength{\fzj@progressinheadfoot@linewidth}{0.4pt}
+\setbeamertemplate{progress bar footer}{
+  \nointerlineskip
+  \setlength{\fzj@progressinheadfoot}{%
+    \paperwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
+  }%
+  \begin{beamercolorbox}[wd=\paperwidth]{progress bar footer}
+    \tikzset{external/export next=false}%
+    \begin{tikzpicture}
+      \fill[fg] (0,0) rectangle (\fzj@progressinheadfoot, \fzj@progressinheadfoot@linewidth);
+    \end{tikzpicture}%
+  \end{beamercolorbox}
+}
+
+
+\lstset{
+    basicstyle=\ttfamily\upshape\small,
+    breaklines=true,
+    backgroundcolor=\color{lightgray!20},
+    xleftmargin=0.3cm,
+    framexleftmargin=1em,
+    keywordstyle=\bfseries\color{blue},
+    stringstyle=\color{magenta},
+    commentstyle=\itshape\color{gray},
+    deletekeywords={compile},
+    escapechar=\&,
+    escapeinside={<@}{@>}
+}
+
+% make sure we have a large number of total slided before the first run to keep the frame/total frame ratio below 1
+% if your slide deck has more than 300 slides, you might increase the number below
+% after the second latex run the totalframenumber will be read correctly from the .aux file
+\def\inserttotalframenumber{300}
+
+\makeatother

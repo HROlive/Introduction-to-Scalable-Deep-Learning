@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="29.326 55.814 256 55.468" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <path d="M 4.272 11.025 H 53.816 L 53.816 10.145 L 57.334 11.904 L 53.816 13.663 L 53.816 12.784 H 4.272 V 11.025 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" transform="matrix(0, 1, -1, 0, 43.988949, 52.749737)" bx:shape="arrow 4.272 10.145 53.062 3.518 1.759 3.518 0 1@b49ed7e8"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 4.7px;" x="33.595" y="81.252" transform="matrix(0, 1, -1, 0, 115.356651, 45.369442)">TIME</text>
+  <g transform="matrix(1, 0, 0, 1, -4.588214, 22.498997)">
+    <g transform="matrix(0.351793, 0, 0, 0.351793, 37.293739, 38.728588)">
+      <rect x="28.627" y="58.992" width="113.385" height="36.442" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"/>
+      <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px; white-space: pre;" y="-11.372"><tspan x="55.754" y="84.558" style="font-size: 13.3px; word-spacing: 0px;">Process </tspan><tspan style="font-style: italic; font-weight: 700; text-decoration: underline solid rgba(0, 0, 0, 0.85); font-size: 13.3px; word-spacing: 0px;">0</tspan></text>
+    </g>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 4.7px;" x="40.72" y="83.092" transform="matrix(1, 0, 0, 1, 0, -5)">data=🧑‍🎤<tspan x="40.720001220703125" dy="1em">​</tspan>comm.gather(data, root=0)<tspan x="40.720001220703125" dy="1em">​</tspan>data=[🧑‍🎤,🎃, ..., 🦋, 🌺]</text>
+  </g>
+  <g transform="matrix(0.351793, 0, 0, 0.351793, 4.184052, 34.420471)" style="">
+    <g transform="matrix(1, 0, 0, 1, 239.004517, -46.562313)">
+      <g transform="matrix(1, 0, 0, 1, -26.357817, 45.977669)">
+        <rect x="67.05" y="72.888" width="113.385" height="36.442" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px; white-space: pre;"><tspan x="94.177" y="95.611">Process </tspan><tspan style="font-style: italic; font-weight: 700; text-decoration: underline solid rgba(0, 0, 0, 0.85);">1</tspan></text>
+      </g>
+    </g>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px;" x="255.276" y="128.287">data=🎃<tspan x="255.2760009765625" dy="1em">​</tspan>comm.gather(data, root=0)</text>
+  </g>
+  <g transform="matrix(0.351793, 0, 0, 0.351793, 168.233322, 34.136734)" style="">
+    <g transform="matrix(1, 0, 0, 1, -6.513059, 1.444443)">
+      <rect x="28.627" y="73.207" width="113.385" height="36.442" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"/>
+      <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px; white-space: pre;"><tspan x="55.754" y="95.93">Process </tspan><tspan style="font-style: italic; font-weight: 700; text-decoration: underline solid rgba(255, 255, 255, 0.8);">14</tspan></text>
+    </g>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px;" x="3.225" y="127.552">data=🦋<tspan x="3.2249999046325684" dy="1em">​</tspan>comm.gather(data, root=0)</text>
+  </g>
+  <g transform="matrix(0.351793, 0, 0, 0.351793, 139.981308, 34.420471)" style="">
+    <g transform="matrix(1, 0, 0, 1, 239.004517, -46.562313)">
+      <g transform="matrix(1, 0, 0, 1, -26.357817, 45.977669)">
+        <rect x="67.05" y="72.888" width="113.385" height="36.442" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px; white-space: pre;"><tspan x="94.177" y="95.611">Process </tspan><tspan style="font-style: italic; font-weight: 700; text-decoration: underline solid rgba(255, 255, 255, 0.8);">15</tspan></text>
+      </g>
+    </g>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13.3px;" x="255.276" y="128.287">data=🌺<tspan x="255.2760009765625" dy="1em">​</tspan>comm.gather(data, root=0)</text>
+  </g>
+  <g transform="matrix(0.763472, 0, 0, 0.755924, 171.041611, 25.514383)" style="">
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 31.6px;" x="-29.237" y="68.785">...</text>
+  </g>
+  <path d="M 108.237 87.892 H 125.672 L 125.672 86.892 L 129.672 88.892 L 125.672 90.892 L 125.672 89.892 H 108.237 V 87.892 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" transform="matrix(-0.784156, 0.620564, -0.620564, -0.784156, 249.274963, 91.428909)" bx:shape="arrow 108.237 86.892 21.435 4 2 4 0 1@e40c41f7"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 8px;" x="98.805" y="95.243">🎃</text>
+  <path d="M 167.584 83.555 H 234.787 L 234.787 82.555 L 238.787 84.555 L 234.787 86.555 L 234.787 85.555 H 167.584 V 83.555 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" transform="matrix(-0.96873, 0.248116, -0.248116, -0.96873, 351.907104, 124.886185)" bx:shape="arrow 167.584 82.555 71.203 4 2 4 0 1@68bf0b00"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 9.8px;" x="127.258" y="96.422">🦋</text>
+  <path d="M 235.21 84.955 H 348.09 L 348.09 83.955 L 352.09 85.955 L 348.09 87.955 L 348.09 86.955 H 235.21 V 84.955 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" transform="matrix(-0.990377, 0.138393, -0.138393, -0.990377, 481.052399, 138.530685)" bx:shape="arrow 235.21 83.955 116.88 4 2 4 0 1@646735ac"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 9.1px;" x="173.234" y="97.527">🌺</text>
+</svg>

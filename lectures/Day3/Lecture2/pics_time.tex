@@ -1,0 +1,203 @@
+\tikzstyle{load} = [rectangle, rounded corners, minimum width=1.6cm, minimum height=1.6cm,text centered, draw=none, fill=fzjorange, opacity=1]
+\tikzstyle{compute} = [rectangle, rounded corners, minimum width=1.6cm, minimum height=1.6cm,text centered, draw=none, fill=fzjlightblue]
+\tikzstyle{transform} = [rectangle, rounded corners, minimum width=1.6cm, minimum height=1.6cm,minimum width=1.8cm, text centered, draw=none, fill=fzjviolet]
+\tikzstyle{transfer} = [rectangle, rounded corners, minimum width=1.6cm, minimum height=1.6cm,minimum width=1.2cm, text centered, draw=none, fill=fzjyellow]
+
+\def \arrowstart{ (0.5,1.8) }
+\def \arrowend{ (1.7,1.8) }
+
+
+\newcommand{\timeserial} {
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [load, minimum width=11mm,anchor=south west] (load-1) at (0, 0) {\rotatebox[]{-90}{Load}}; 
+\node[compute,anchor=north west] (compute-1) at (load-1.south east) {\rotatebox[]{-90}{Compute}};
+
+\foreach \i in {2,...,5} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (compute-\imone.north east) {\rotatebox[]{-90}{Load}}; 
+    \node[compute,anchor=north west] (compute-\i) at (load-\i.south east) {\rotatebox[]{-90}{Compute}};
+ }
+
+\end{tikzpicture}
+}
+%\timeserial
+
+\newcommand{\timebufferone} {
+
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [load, minimum width=11mm,anchor=south west] (load-1) at (0, 0) {\rotatebox[]{-90}{Load}}; 
+\node[compute,anchor=north west] (compute-1) at (load-1.south east) {\rotatebox[]{-90}{Compute}};
+
+\foreach \i in {2,...,7} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (compute-\imone.north west) {\rotatebox[]{-90}{Load}}; 
+    \node[compute,anchor=north west] (compute-\i) at (compute-\imone.north east) {\rotatebox[]{-90}{Compute}};
+ }
+
+\end{tikzpicture}
+}
+
+
+
+\newcommand{\timebuffer} {
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [load, minimum width=11mm,anchor=south west] (load-1) at (0, 0) {\rotatebox[]{-90}{Load}}; 
+\node[compute,anchor=north west] (compute-1) at (load-1.south east) {\rotatebox[]{-90}{Compute}};
+
+\foreach \i in {2,...,5} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (load-\imone.south east) {\rotatebox[]{-90}{Load}}; 
+    \node[compute,anchor=north west] (compute-\i) at (compute-\imone.north east) {\rotatebox[]{-90}{Compute}};
+ }
+
+\foreach \i in {6,...,10} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (compute-\imone.north west) {\rotatebox[]{-90}{Load}}; 
+    \node[compute,anchor=north west] (compute-\i) at (compute-\imone.north east) {\rotatebox[]{-90}{Compute}};
+ }
+%\node [anchor=north] at (compute-1.south) {buffer size=5};
+\end{tikzpicture}
+}
+
+\newcommand{\timetransform} {
+
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [load, minimum width=11mm,anchor=south west] (load-1) at (0, 0) {\rotatebox[]{-90}{Load}}; 
+\node[transform,anchor=north west] (transform-1) at (load-1.south east) {\rotatebox[]{-90}{Trans}};
+\node[compute,anchor=north west] (compute-1) at (transform-1.south east) {\rotatebox[]{-90}{Comp}};
+
+\foreach \i in {2,...,3} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (load-\imone.south east) {\rotatebox[]{-90}{Load}}; 
+    \node [transform, anchor=north west] (transform-\i) at (transform-\imone.north east) {\rotatebox[]{-90}{Trans}}; 
+    
+    \node[compute,anchor=north west] (compute-\i) at (transform-\imone.south east) {\rotatebox[]{-90}{Comp}};
+ }
+
+\foreach \i in {4,...,6} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [load, minimum width=11mm,anchor=south west] (load-\i) at (transform-\imone.north east) {\rotatebox[]{-90}{Load}}; 
+    \node [transform, anchor=north west] (transform-\i) at (transform-\imone.north east) {\rotatebox[]{-90}{Trans}}; 
+    
+    \node[compute,anchor=north west] (compute-\i) at (transform-\imone.south east) {\rotatebox[]{-90}{Comp}};
+ }
+
+
+\end{tikzpicture}
+}
+
+
+\definecolor{fzjvioletdark1}{RGB}{142, 104, 148}  % FZJ Hyacinth violet
+
+\tikzset{doubletrans/.pic={
+\node [transform, color=fzjvioletdark1] at (0.1,0.1) {\rotatebox[]{-90}{Trans}};
+\node [transform] at (0,0) {\rotatebox[]{-90}{Trans}};
+} }
+\tikzstyle{container}=[outer sep = 0mm, inner sep= 0mm]
+\newcommand{\doubletrans}{
+    \begin{tikzpicture}
+    \pic at (0,0) {doubletrans};
+    \end{tikzpicture}
+}
+\newcommand{\timetransformparallel} {
+
+\begin{tikzpicture}
+
+%\node [container] (t1) at (0, -6) {\doubletrans};
+%\node [container, anchor=north west] at  (t1.north east) {\doubletrans};
+
+
+
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [load, minimum width=11mm,anchor=south west] (load-1-1) at (0, 0) {\rotatebox[]{-90}{Load}}; 
+\node [load, minimum width=11mm,anchor=south west] (load-1-2) at (load-1-1.south east) {\rotatebox[]{-90}{Load}}; 
+
+\node [container, anchor=north west] (transform-1) at  (load-1-2.south east) {\doubletrans};
+
+\node[compute,anchor=north west] (compute-1-1) at (transform-1.south east) {\rotatebox[]{-90}{Comp}};
+\node[compute,anchor=north west] (compute-1-2) at (compute-1-1.north east) {\rotatebox[]{-90}{Comp}};
+
+\foreach \i in {2,...,3} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+
+\node [load, minimum width=11mm,anchor=south west] (load-\i-1) at (load-\imone-2.south east) {\rotatebox[]{-90}{Load\i}}; 
+\node [load, minimum width=11mm,anchor=south west] (load-\i-2) at (load-\i-1.south east) {\rotatebox[]{-90}{Load}}; 
+
+\node [container, anchor=north west] (transform-\i) at  (load-\i-2.south east) {\doubletrans};
+
+\node[compute,anchor=north west] (compute-\i-1) at (compute-\imone-2.north east) {\rotatebox[]{-90}{Comp}};
+\node[compute,anchor=north west] (compute-\i-2) at (compute-\i-1.north east) {\rotatebox[]{-90}{Comp}};
+
+
+ 
+ }
+
+
+ 
+ \end{tikzpicture}
+ 
+}
+
+
+\newcommand{\commserial} {
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [compute, minimum width=16mm,anchor=south west] (compute-1) at (0, 0) {\rotatebox[]{-90}{Compute}}; 
+\node[transfer,anchor=north west] (transfer-1) at (compute-1.south east) {\rotatebox[]{-90}{Transfer}};
+
+\foreach \i in {2,...,5} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [compute, minimum width=16mm,anchor=south west] (compute-\i) at (transfer-\imone.north east) {\rotatebox[]{-90}{Compute}}; 
+    \node[transfer,anchor=north west] (transfer-\i) at (compute-\i.south east) {\rotatebox[]{-90}{Transfer}};
+ }
+
+\end{tikzpicture}
+}
+
+\newcommand{\commhidden} {
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [compute, minimum width=16mm,anchor=south west] (compute-1) at (0, 0) {\rotatebox[]{-90}{Compute}}; 
+\node[transfer,anchor=north west, xshift=-7mm] (transfer-1) at (compute-1.south east) {\rotatebox[]{-90}{Transfer}};
+
+\foreach \i in {2,...,5} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [compute, minimum width=16mm,anchor=south west] (compute-\i) at (transfer-\imone.north east) {\rotatebox[]{-90}{Compute}}; 
+    \node[transfer,anchor=north west, xshift=-7mm] (transfer-\i) at (compute-\i.south east) {\rotatebox[]{-90}{Transfer}};
+ }
+ \end{tikzpicture}
+}
+
+\newcommand{\commhiddencomplete} {
+\begin{tikzpicture}
+
+\draw [->] \arrowstart -- node [midway,above] {time}  \arrowend ;
+
+\node [compute, minimum width=16mm,anchor=south west] (compute-1) at (0, 0) {\rotatebox[]{-90}{Compute}}; 
+\node[transfer,anchor=north west] (transfer-1) at (compute-1.south east) {\rotatebox[]{-90}{Transfer}};
+
+\foreach \i in {2,...,5} {
+    \pgfmathtruncatemacro{\imone}{\i-1}
+    \node [compute, minimum width=16mm,anchor=south west] (compute-\i) at (compute-\imone.south east) {\rotatebox[]{-90}{Compute}}; 
+    \node[transfer,anchor=north west] (transfer-\i) at (compute-\i.south east) {\rotatebox[]{-90}{Transfer}};
+ }
+ \end{tikzpicture}
+}

@@ -1,0 +1,36 @@
+*.pyc
+
+# MacOS files
+.DS_Store
+
+# Result files
+#*.gif
+#*.png
+#*.pdf
+*.npy
+*.npz
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Model checkpoints
+training_checkpoints/
+
+# Slurm logs
+*.out
+*.err
+
+# Pandoc/LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.snm
+*.toc
+*.vrb
+
+# Archives
+*.zip
+*.tgz
+*.gz

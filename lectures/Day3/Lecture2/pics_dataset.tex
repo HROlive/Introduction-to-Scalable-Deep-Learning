@@ -1,0 +1,343 @@
+% providelength from https://tex.stackexchange.com/questions/184991/a-reusable-providelength-no-stop-break-if-length-already-defined
+
+
+%\newcommand{\defdatasetstyles}{
+\NewDocumentCommand{\defdatasetstyles}{ O{1.0} }{
+\def\scale{#1}
+% Define the rounding radius
+%\pgfmath{\rrad}{\scale*3mm}
+\providelength{\rradnull}
+\setlength{\rradnull}{1.5mm}
+\providelength{\rrad}
+\setlength{\rrad}{\scale \rradnull }
+
+% Styles for gradients and so on
+\tikzstyle{gradient} = [rectangle, rounded corners, minimum width=0.9cm, minimum height=0.9cm,text centered, draw=none, fill=fzjlightblue]
+\tikzstyle{avgradient} = [rectangle, rounded corners, minimum width=0.9cm, minimum height=0.9cm,text centered, draw=none, fill=fzjviolet]
+\tikzstyle{weight} = [rectangle, rounded corners, minimum width=0.9cm, minimum height=0.9cm,text centered, draw=none, fill=fzjorange]
+
+\providelength{\layerdist}\setlength{\layerdist}{24mm}
+\providelength{\distleft}\setlength{\distleft}{12mm}
+\providelength{\boxdist}\setlength{\boxdist}{7mm}
+
+\tikzstyle{item} = [rectangle, rounded corners=\rrad, minimum width=0.6cm, minimum height=0.5cm,text centered, draw=black, fill=white]
+}
+
+
+%%%%%%%%%%%%%%%%% Shard %%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand{\picdatasetshard}{ O{1.0} O{6} O{3}}{
+
+\def\npernode{#2}
+\def\nshards{#3}
+
+\defdatasetstyles
+
+\begin{tikzpicture}[scale=#1, every node/.style={scale=#1}]
+
+\pgfmathtruncatemacro{\nshardsmone}{\nshards-1}
+\pgfmathtruncatemacro{\npernodemone}{\npernode-1}
+
+\foreach \i in {0,...,\nshardsmone} {
+
+    \pgfmathtruncatemacro{\npone}{\npernode+1}
+
+    \foreach \j in {0,...,\npernodemone} {
+
+        \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+        
+        \node [item]  (input-\k) at (\boxdist * \k + \distleft , 0) {\k}; 
+    
+        \pgfmathtruncatemacro{\imone}{\i-1}
+
+    }
+}
+\foreach \i in {0,...,\nshardsmone} {
+
+
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+    \pgfmathtruncatemacro{\kone}{\npernode*\i}
+    %\node [yshift=8mm, xshift=3mm] (node) at (input-\knull) {Shard \i};
+    
+    \pgfmathtruncatemacro{\nmone}{\npernode-1}
+    \foreach \j in {0,...,\nmone} {
+    
+    \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+    \pgfmathtruncatemacro{\l}{\nshards*\j+\i}
+    
+    \node [item]  (output-\k) at (\boxdist * \k + \distleft , -\layerdist) {\l}; 
+    \ifnum \l<5
+       \draw [->] (input-\l.south) to [out=-90,in=90] (output-\k.north);
+    \fi
+    }
+}
+
+    
+\foreach \i in {0,...,\nshardsmone} {
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+
+    \node [yshift=-\layerdist-8mm, xshift=3mm] (node) at (input-\knull) {Shard \i};
+}
+\node [anchor=west] (inp) at (-0.5,0) {Input};
+\node [anchor=west] (buf) at (-0.5,-\layerdist) {Shard};
+
+ \foreach \i in {1,...,\nshardsmone} {
+     \pgfmathtruncatemacro{\kone}{\npernode*(\i)-1}
+     \pgfmathtruncatemacro{\ktwo}{\npernode*(\i)}
+     \draw ( $(output-\kone.west)!0.5!(output-\ktwo.east)+(0,0.5)$ ) -- +(0,-2);
+     
+}
+
+\end{tikzpicture}
+
+} %%%%%%%%%%%%%%%%% Shard %%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% Split %%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand{\picdatasetsplit}{ O{1.0} O{6} O{3}}{
+
+\def\npernode{#2}
+\def\nshards{#3}
+
+\defdatasetstyles
+
+\begin{tikzpicture}[scale=#1, every node/.style={scale=#1}]
+
+\pgfmathtruncatemacro{\nshardsmone}{\nshards-1}
+\pgfmathtruncatemacro{\npernodemone}{\npernode-1}
+
+\foreach \i in {0,...,\nshardsmone} {
+
+    \pgfmathtruncatemacro{\npone}{\npernode+1}
+
+    \foreach \j in {0,...,\npernodemone} {
+
+        \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+        
+        \node [item]  (input-\k) at (\boxdist * \k + \distleft , 0) {\k}; 
+    
+        \pgfmathtruncatemacro{\imone}{\i-1}
+
+    }
+}
+\foreach \i in {0,...,\nshardsmone} {
+
+
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+    \pgfmathtruncatemacro{\kone}{\npernode*\i}
+    %\node [yshift=8mm, xshift=3mm] (node) at (input-\knull) {Shard \i};
+    
+    \pgfmathtruncatemacro{\nmone}{\npernode-1}
+    \foreach \j in {0,...,\nmone} {
+    
+    \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+    \pgfmathtruncatemacro{\l}{\nshards*\j+\i}
+    
+    \node [item]  (output-\k) at (\boxdist * \k + \distleft , -\layerdist) {\k}; 
+    
+       \draw [->] (input-\k.south) to [out=-90,in=90] (output-\k.north);
+    
+    }
+}
+
+    
+\foreach \i in {0,...,\nshardsmone} {
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+
+    \node [yshift=-\layerdist-8mm, xshift=3mm] (node) at (input-\knull) {Split \i};
+}
+\node [anchor=west] (inp) at (-0.5,0) {Input};
+\node [anchor=west] (buf) at (-0.5,-\layerdist) {Split};
+
+ \foreach \i in {1,...,\nshardsmone} {
+     \pgfmathtruncatemacro{\kone}{\npernode*(\i)-1}
+     \pgfmathtruncatemacro{\ktwo}{\npernode*(\i)}
+     \draw ( $(output-\kone.west)!0.5!(output-\ktwo.east)+(0,0.5)$ ) -- +(0,-2);
+     
+}
+
+\end{tikzpicture}
+
+}
+%%%%%%%%%%%%%%%%% /Split %%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% Batch %%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand{\picdatasetbatch}{ O{1.0} O{4} O{4}}{
+
+\def\npernode{#2}
+\def\nshards{#3}
+
+\defdatasetstyles[#1]
+\providelength{\layerdist}\setlength{\layerdist}{12mm}
+
+\begin{tikzpicture}[scale=#1,  transform shape]
+
+\pgfmathtruncatemacro{\nshardsmone}{\nshards-1}
+\pgfmathtruncatemacro{\npernodemone}{\npernode-1}
+
+\foreach \i in {0,...,\nshardsmone} {
+
+    \pgfmathtruncatemacro{\npone}{\npernode+1}
+
+    \foreach \j in {0,...,\npernodemone} {
+
+        \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+        
+        \node [item]  (input-\k) at (\boxdist * \k + \distleft , 0) {\k}; 
+    
+        \pgfmathtruncatemacro{\imone}{\i-1}
+
+    }
+}
+
+
+
+\foreach \i in {0,...,\nshardsmone} {
+
+
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+    \pgfmathtruncatemacro{\kone}{\npernode*\i}
+    
+    %\node [yshift=8mm, xshift=3mm] (node) at (input-\knull) {Shard \i};
+    
+    \pgfmathtruncatemacro{\nmone}{\npernode-1}
+    \foreach \j in {0,...,\nmone} {
+    
+        \pgfmathtruncatemacro{\k}{\npernode*\i+\j}
+        \pgfmathtruncatemacro{\l}{\nshards*\j+\i}
+        
+        \node [item]  (output-\k) at (\boxdist * \knull + \distleft + 1.1cm , -\layerdist-\boxdist*\j ) {\k  }; 
+        
+           %\draw [->] (input-\k.south) to [out=-90,in=90] (output-\k.north);
+        
+    }
+    \pgfmathtruncatemacro{\klast}{\knull+\nmone}
+    \node [item, fill=none, fit={(output-\knull) (output-\klast) } ] {};
+    
+}
+
+    
+\foreach \i in {0,...,\nshardsmone} {
+    \pgfmathtruncatemacro{\knull}{\npernode*\i}
+
+    \node [yshift=-\layerdist-8mm, xshift=3mm] (node) at (input-\knull) {\rotatebox{-90}{Batch \i} };
+}
+\node [anchor=west] (inp) at (-0.5,0) {Input};
+\node [anchor=west] (buf) at (-0.5,-\layerdist) {Batch};
+
+ \foreach \i in {1,...,\nshardsmone} {
+     \pgfmathtruncatemacro{\kone}{\npernode*(\i)-1}
+     \pgfmathtruncatemacro{\ktwo}{\npernode*(\i)}
+     \draw ( $(input-\kone.west)!0.5!(input-\ktwo.east)+(0,0.5)$ ) -- +(0,-4);
+     
+}
+
+\end{tikzpicture}
+}
+
+
+
+\NewDocumentCommand{\picprefetch}{ O{1.0}  O{7} O{12}}{
+
+\defdatasetstyles[#1]
+\setlength{\layerdist}{12mm}
+
+\newcommand{\ninput}{14}
+\newcommand{\nbuffer}{8}
+
+
+\begin{tikzpicture}[scale=#1,  transform shape]
+\tikzstyle{item} = [rectangle, rounded corners, minimum width=0.6cm, minimum height=0.5cm,text centered, draw=black, fill=white]
+
+%\def\bufferlabels{{$(0+\nbuffer)$, $(1+\nbuffer)$, $(2+\nbuffer)$,3,4,5,6,7,8,9,10}} 
+%\def\bufferlabels{{{12, 13, 14,3,4,5,6,7,8,9,10}}}
+
+\def \nout {#2}
+\def \nin {#3}
+\pgfmathtruncatemacro{\tmp}{\nbuffer-1}
+\pgfmathtruncatemacro{\nbuf}{\nin >\nbuffer? \nin - \nbuffer : \nbuffer }
+%\def \nbuf {\tmp} % todo modulo
+
+
+\node (inp) at (0,0) {Input};
+\node (buf) at (0,-\layerdist) {Buffer};
+\node (out) at (0,-2*\layerdist) {Output};
+\foreach \i in {0,...,\ninput}
+{
+\node [item]  (input-\i) at (\boxdist * \i + \distleft , 0) {\i}; 
+}
+\pgfmathtruncatemacro{\tmp}{\nbuffer-1}
+\foreach \i in {0,...,\tmp}
+{
+    \pgfmathtruncatemacro{\label}{ 
+    \i> \nin-\nbuffer ? \i : \i+\nbuffer
+    }
+    \node [item]  (buffer-\i) at ( \boxdist * \i + \distleft, -1*\layerdist) {
+    %\bufferlabels[\i]
+    \label
+    
+    }; 
+}
+
+\node[item] (output) at (\distleft, -2*\layerdist) { \nout};
+% This works
+\draw [->] (input-\nin.south) |- ($(input-\nin)!0.5!(buffer-\nout)$)  -| (buffer-\nbuf.north) ;
+\draw [->] (buffer-\nout.south) |- ($(buffer-\nout)!0.5!(output)$)  -| (output.north) ;
+
+
+%\path (input-9.south) edge [->] (buffer-2.north);
+\end{tikzpicture}
+}
+
+\NewDocumentCommand{\picdatasetshuffle}{ O{1.0}  O{6} O{12}}{
+
+\defdatasetstyles[#1]
+\setlength{\layerdist}{12mm}
+
+\def\ninput{14} %% number of input samples
+\def\nbuffer{8} %% buffer lengths
+
+
+\begin{tikzpicture}[scale=#1,  transform shape]
+\tikzstyle{item} = [rectangle, rounded corners, minimum width=0.6cm, minimum height=0.5cm,text centered, draw=black, fill=white]
+
+%\def\bufferlabels{{$(0+\nbuffer)$, $(1+\nbuffer)$, $(2+\nbuffer)$,3,4,5,6,7,8,9,10}} 
+\def\bufferlabels{{{11, 7, 12 ,5,0,1,9,7}}}
+
+\def \nout {#2} %% Buffer Element that is pulled out
+\def \nin {#3}  %% Input Element that is fetched next
+\pgfmathtruncatemacro{\tmp}{\nbuffer-1}
+\pgfmathtruncatemacro{\nbuf}{ 2 } %% Where to put text input
+%\def \nbuf {\tmp} % todo modulo
+
+
+\node (inp) at (0,0) {Input};
+\node (buf) at (0,-\layerdist) {Buffer};
+\node (out) at (0,-2*\layerdist) {Shuffle};
+\foreach \i in {0,...,\ninput}
+{
+\node [item]  (input-\i) at (\boxdist * \i + \distleft , 0) {\i}; 
+}
+\pgfmathtruncatemacro{\tmp}{\nbuffer-1}
+\foreach \i in {0,...,\tmp}
+{
+    \pgfmathtruncatemacro{\label}{ 
+    \bufferlabels[\i] %% only works in math mode
+    }
+    \node [item]  (buffer-\i) at ( \boxdist * \i + \distleft, -1*\layerdist) {
+    \label
+    
+    }; 
+}
+
+\pgfmathtruncatemacro{\label} {
+    \bufferlabels[\nout]
+}
+
+\node[item] (output) at (\distleft, -2*\layerdist) { \label};
+% This works
+\draw [->, dashed] (input-\nin.south) |- ($(input-\nin)!0.5!(buffer-\nout)$) node [below] {fill buffer} -| (buffer-\nbuf.north) ;
+\draw [->] (buffer-\nout.south) |- ($(buffer-\nout)!0.5!(output)$) node [below] {pick at random} -| (output.north) ;
+
+
+%\path (input-9.south) edge [->] (buffer-2.north);
+\end{tikzpicture}
+}

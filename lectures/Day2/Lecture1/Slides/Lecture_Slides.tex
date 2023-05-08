@@ -1,0 +1,112 @@
+\documentclass[t, 10pt, aspectratio=1610]{beamer}
+ % align text inside frame to t=top, b=bottom, c=center
+ % 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt available as text font
+ % select your aspect ratio 4:3=43, 16:9=169, 16:10=1610
+
+\usetheme{Juelich}
+
+%\usetheme{default}
+%\usecolortheme{beaver}
+
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{:}
+\setbeamertemplate{slide counter}[showall]
+\setbeamercolor{code}{fg=black,bg=fzjblue!10}
+\setbeamercolor{prototype}{fg=black,bg=fzjgreen!20}
+
+% \setbeamertemplate{footer element1}[default][\insertsection]%
+
+\newcommand{\activatefootline}{
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=0.25ex,dp=1ex,right]{date in head/foot}%
+            \usebeamerfont{author in head/foot}\insertauthor\hspace*{2em}
+            \insertframenumber{}\hspace*{2ex}
+        \end{beamercolorbox}}%
+        \vskip0pt%
+}
+}
+
+\newcommand{\deactivatefootline}{\setbeamertemplate{footline}{}}
+
+\usepackage{graphics}
+\newcommand{\gfxpath}{../images}
+
+\usepackage[ngerman,english]{babel}
+%\selectlanguage{ngerman}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% =====================================================
+%  packages / definitions needed by pandoc
+%
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{framed}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[warn]{textcomp}
+% package listings important for code highlighting !
+\usepackage{listings}
+
+% for image placing
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%\renewcommand{\emph}[1]{\structure{#1}}
+
+\renewcommand{\thefootnote}{}
+
+% AUTHOR AND TITLE FOR TITLE PAGE
+\author[J. Jitsev]{Jenia Jitsev}
+\institute[JSC]{Scalable Learning \& Multi-Purpose AI Lab, Helmholtz AI, LAION @ JSC}
+\date{2023-05-09}
+\title{Day 2: Towards Scalable Deep Learning}
+\subtitle{Motivation, Deep Learning Basics Recap}
+%\title{Day 2 : Large Scale Deep Learning: Motivation, Basics Recap}
+%\subtitle{Towards Scalable Deep Learning }
+
+%\AtBeginPart{%
+%  \subtitle{\partname}
+%  \makepart
+%  \begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents[hideallsubsection]
+%  \end{frame}
+%}
+
+%\AtBeginSection{%
+%  \subtitle{\sectionname}
+%  \begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+% -- INCLUDE BACKGROUND GRAPHIC FOR TITLE PAGE
+\titlegraphic{\includegraphics[width=\paperwidth]{../images/placeholder}}
+
+
+\begin{document}
+% Titelseite
+\fzjset{title page=image}
+
+%\fzjset{title page=text}
+\deactivatefootline
+\maketitle
+
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents
+%\end{frame}
+
+%% pandoc generated slides
+\activatefootline
+\include{Slides}
+
+\end{document}
