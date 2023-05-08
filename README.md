@@ -7,17 +7,15 @@ In this course, we will cover machine learning and deep learning and how to achi
 
 We will start the course with a presentation of high performance computing system architectures and the design paradigms for HPC software. In the tutorial, we familiarize the users with the environment. Furthermore, we give a recap of important machine learning concepts and algorithms and the participants will train and test a reference model. Afterwards, we introduce how deep learning algorithms can be parallelized for supercomputer usage with Horovod. Furthermore, we discuss best practicies and pitfalls in adopting deep learning algorithms on supercomputers and learn to test their function and performance. Finally we apply the gained expertise to large scale unsupervised learning, with a particular focus on Generative Adversarial Networks (GANs).
 
-## Basic Info
+## Information
 
 This repo contains the material for the course Scalable Deep Learning.
 
 It is a five half-day course with two lectures and two tutorials each.
-Lectures and tutorials are located in the corresponding folders [lectures](lectures), [tutorials](tutorials) .
+Lectures and tutorials are located in the corresponding folders [lectures](lectures), [tutorials](tutorials).
 
-All Tutorials are set up in the form of jupyter notebooks. Only some tutorials should be executed
-in notebooks as well. Most tutorials rely on adapting code in standalone scripts.
-Therefore, we strongly suggest the workflow of cloning the repo on our supercomputer
-and executing the scripts there.
+All Tutorials are set up in the form of jupyter notebooks. Only some tutorials should be executed in notebooks as well. Most tutorials rely on adapting code in standalone scripts.
+Therefore, we strongly suggest the workflow of cloning the repo on our supercomputer and executing the scripts there.
 
 [Jupyter-JSC](https://jupyter-jsc.fz-juelich.de/) can be used to view and execute the tutorial code.
 
@@ -123,3 +121,9 @@ and executing the scripts there.
 - [Advanced GAN distributed training using Horovod](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/tree/main/tutorials/day5/tutorial2)
   - Content: Mehdi Cherti
   - Content supervisor: Mehdi Cherti
+
+## Certificate
+
+The certificate for the course can be found bellow:
+
+["Introduction to Scalable Deep" - Jülich Supercomputing Centre (JSC)]() (Issued On: May 2023)
