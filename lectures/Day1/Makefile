@@ -15,7 +15,7 @@ PANDOC_OPTIONS=-t revealjs -s \
 	-V hlss=zenburn \
 	-V theme=sky \
 	-V transition=fade  \
-	-i 
+	-i # Incremental - show one slide at a time
 # --embed-resources   # This make a single file, good for distribution
 #	-A footer.html # The footer is just too big
 

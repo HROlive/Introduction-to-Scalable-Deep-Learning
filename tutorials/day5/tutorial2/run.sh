@@ -7,6 +7,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --partition=dc-gpu
 source /p/project/training2306/software_environment/activate.sh
+ml scikit-image
 export NCCL_DEBUG=INFO
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export CUDA_VISIBLE_DEVICES="0,1,2,3"

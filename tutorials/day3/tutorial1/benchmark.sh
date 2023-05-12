@@ -9,7 +9,7 @@ fi
 source /p/project/training2306/software_environment/activate.sh
 ACCOUNT=training2306
 TIME=00:10:00
-PARTITION=booster
+PARTITION=dc-gpu
 CPUS_PER_TASK=24
 export OMP_NUM_THREADS=24
 export CUDA_VISIBLE_DEVICES="0,1,2,3"

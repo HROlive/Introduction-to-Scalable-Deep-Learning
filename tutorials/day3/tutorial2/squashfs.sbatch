@@ -19,7 +19,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=# TODO
 #SBATCH --account=training2306
-#SBATCH --signal=TERM@60  # This allows us to clean up the FUSE.
 #SBATCH --partition=dc-gpu
 
 [...]  # TODO

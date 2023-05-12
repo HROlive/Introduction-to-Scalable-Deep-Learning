@@ -25,7 +25,7 @@
 
 ## Deep Learning \& Distributed Training
 
-- Networks : large models, many layers, large number of parameters (weights)
+- Networks: large models, many layers, large number of parameters (weights)
   - Vision: Convolutional, Transformer and Hybrid networks
   - hundreds of layers, hundred millions of parameters (currently up to 20B)
 
@@ -35,7 +35,7 @@
 
 ## Deep Learning \& Distributed Training
 
-- Networks : large models, many layers, large number of parameters (weights)
+- Networks: large models, many layers, large number of parameters (weights)
   - Language: Transformer networks
   - hundreds of layers, billions of parameters (GPT-3: 175 Billion)
 
@@ -46,7 +46,7 @@
 
 ## Deep Learning \& Distributed Training
 
-* GPT-3: 175 billions weights, $\approx$ 350 GB, does not fit on single GPU (A100: 40/80GB)
+* GPT-3: 175 billion weights, $\approx$ 350 GB, does not fit on single GPU (A100: 40/80 GB)
 * ResNets, ViT $<$ 1B weights, $\lesssim$ 40 GB, fit on single GPU
   - depending on chosen resolution of input $X$ and batch size $\vert B \vert$!
 
@@ -56,7 +56,7 @@
 
 ## Deep Learning \& Distributed Training
 
-- GPT-3: 175 billions weights, $\approx$ 350 GB, does not fit on single GPU
+- GPT-3: 175 billion weights, $\approx$ 350 GB, does not fit on single GPU
 - ResNets, ViT $<$ 1B weights, $\lesssim$ 40 GB, fit on single GPU
   - depending on chosen resolution of input $X$ and batch size $\vert B \vert$!
 
@@ -80,7 +80,7 @@
 - Use the computational power and memory capacity of multiple nodes of a large machine
 - Requires taking care of internode communication
 - Requires high bandwidth interconnect between the compute nodes
-  - HPC: InfiniBand (4x Mellanox 200 Gb/s cards on JUWELS Booster per node)
+  - HPC: InfiniBand (4$\times$ Mellanox 200 Gb/s cards on JUWELS Booster per node)
   - Not available on conventional clusters!
 
 \center{\includegraphics[width=0.9\textwidth]{../images/MultiNode_Training_Communication_Collectives.png}}
@@ -110,7 +110,7 @@
 - Model does not fit on single GPU: no training without parallelization possible at all
   - AlexNet in 2012; GPT-3; CLIP ViT G/14, ...
 - Model fits on single GPU: why distributed training?
-  - multiple GPUs can drastically speed up training phase --> **data parallelism**
+  - multiple GPUs can drastically speed up training phase $\rightarrow$ **data parallelism**
     - e.g. ImageNet training: from days to hours or minutes
 
 \center{\includegraphics[width=\textwidth]{../images/Distributed_Training_Schemes_Workers.pdf}}
@@ -164,7 +164,7 @@
 
 ## Deep Learning with Data Parallelism
 
-- Data parallelism: simple approch for efficient distributed model training
+- Data parallelism: simple approach for efficient distributed model training
   - can be understood as training a model using a larger mini-batch size $\vert \mathfrak{B} \vert$
     - $\mathfrak{B} = B_1 \cup \ldots \cup B_K$, $B_i \cap B_j = \emptyset,\ \forall  i,j \in K$ workers
     \vspace*{2mm}
@@ -284,7 +284,7 @@ dataset = dataset.prefetch(tf.data.AUTOTUNE)
 
 * Data parallelism: proper data feeding for each worker
   - important not to let GPUs "starve" while training
-  - data handling via **data pipelines** routines
+  - data handling via **data pipeline** routines
   - use efficient **data containers**: HDF5, LMDB, TFRecords, WebDataset, ...
 
 \center{\includegraphics[width=0.9\textwidth]{../images/GPU_CPU_Data_Training_1.pdf}}
@@ -332,7 +332,7 @@ dataset = dataset.prefetch(tf.data.AUTOTUNE)
   - NCCL: highly optimized GPU-GPU communication collective routines
     - same as in MPI: \texttt{Allreduce}, \texttt{Allgather}, \texttt{Broadcast}
   - MPI: for CPU-CPU communication
-  - Simple scheme: 1 worker – 1 MPI Process
+  - Simple scheme: 1 worker – 1 MPI process
   - Process nomenclature as in MPI: \texttt{rank}, \texttt{world\_size}
   - for local GPU assignment: \texttt{local\_rank}
 

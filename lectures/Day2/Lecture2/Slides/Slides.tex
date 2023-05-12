@@ -41,7 +41,7 @@
 \begin{itemize}
 \tightlist
 \item
-  Networks : large models, many layers, large number of parameters
+  Networks: large models, many layers, large number of parameters
   (weights)
 
   \begin{itemize}
@@ -66,7 +66,7 @@
 \begin{itemize}
 \tightlist
 \item
-  Networks : large models, many layers, large number of parameters
+  Networks: large models, many layers, large number of parameters
   (weights)
 
   \begin{itemize}
@@ -92,8 +92,8 @@
 \begin{itemize}
 \tightlist
 \item
-  GPT-3: 175 billions weights, \(\approx\) 350 GB, does not fit on
-  single GPU (A100: 40/80GB)
+  GPT-3: 175 billion weights, \(\approx\) 350 GB, does not fit on single
+  GPU (A100: 40/80 GB)
 \item
   ResNets, ViT \(<\) 1B weights, \(\lesssim\) 40 GB, fit on single GPU
 
@@ -115,8 +115,8 @@
 \begin{itemize}
 \tightlist
 \item
-  GPT-3: 175 billions weights, \(\approx\) 350 GB, does not fit on
-  single GPU
+  GPT-3: 175 billion weights, \(\approx\) 350 GB, does not fit on single
+  GPU
 \item
   ResNets, ViT \(<\) 1B weights, \(\lesssim\) 40 GB, fit on single GPU
 
@@ -168,8 +168,8 @@
   \begin{itemize}
   \tightlist
   \item
-    HPC: InfiniBand (4x Mellanox 200 Gb/s cards on JUWELS Booster per
-    node)
+    HPC: InfiniBand (4\(\times\) Mellanox 200 Gb/s cards on JUWELS
+    Booster per node)
   \item
     Not available on conventional clusters!
   \end{itemize}
@@ -229,7 +229,7 @@
   \tightlist
   \item
     multiple GPUs can drastically speed up training phase
-    --\textgreater{} \textbf{data parallelism}
+    \(\rightarrow\) \textbf{data parallelism}
 
     \begin{itemize}
     \tightlist
@@ -358,7 +358,7 @@
 \begin{itemize}
 \tightlist
 \item
-  Data parallelism: simple approch for efficient distributed model
+  Data parallelism: simple approach for efficient distributed model
   training
 
   \begin{itemize}
@@ -630,7 +630,7 @@ dataset = dataset.prefetch(tf.data.AUTOTUNE)
   \item
     important not to let GPUs ``starve'' while training
   \item
-    data handling via \textbf{data pipelines} routines
+    data handling via \textbf{data pipeline} routines
   \item
     use efficient \textbf{data containers}: HDF5, LMDB, TFRecords,
     WebDataset, \ldots{}
@@ -768,7 +768,7 @@ dataset = dataset.prefetch(tf.data.AUTOTUNE)
   \item
     MPI: for CPU-CPU communication
   \item
-    Simple scheme: 1 worker -- 1 MPI Process
+    Simple scheme: 1 worker -- 1 MPI process
   \item
     Process nomenclature as in MPI: \texttt{rank}, \texttt{world\_size}
   \item
