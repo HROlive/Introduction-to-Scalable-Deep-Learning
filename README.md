@@ -126,4 +126,4 @@ Therefore, we strongly suggest the workflow of cloning the repo on our supercomp
 
 The certificate for the course can be found bellow:
 
-["Introduction to Scalable Deep" - Jülich Supercomputing Centre (JSC)]() (Issued On: May 2023)
+["Introduction to Scalable Deep" - Jülich Supercomputing Centre (JSC)](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/blob/main/images/certificate.pdf) (Issued On: May 2023)
