@@ -3,9 +3,9 @@ Introduction to Scalable Deep Learning
 
 ## Description
 
-In this course, we will cover machine learning and deep learning and how to achieve scaling to high performance computing systems. The course aims at covering all levels, from fundamental software design to specific compute environments and toolkits. We want to enable the participants to unlock the resource of machines like the JUWELS booster for their machine learning workflows. Different from previous years we assume that the participants have a background from a university level introductory course to machine learning. Suggested options for self-teaching are given below.
+In this course, we will cover machine learning and deep learning and how to achieve scaling to high-performance computing systems. The course aims to cover all levels, from fundamental software design to specific computing environments and toolkits. We want to enable the participants to unlock the resources of machines like the JUWELS booster for their machine learning workflows. Different from previous years we assume that the participants have a background from a university-level introductory course to machine learning. Suggested options for self-teaching are given below.
 
-We will start the course with a presentation of high performance computing system architectures and the design paradigms for HPC software. In the tutorial, we familiarize the users with the environment. Furthermore, we give a recap of important machine learning concepts and algorithms and the participants will train and test a reference model. Afterwards, we introduce how deep learning algorithms can be parallelized for supercomputer usage with Horovod. Furthermore, we discuss best practicies and pitfalls in adopting deep learning algorithms on supercomputers and learn to test their function and performance. Finally we apply the gained expertise to large scale unsupervised learning, with a particular focus on Generative Adversarial Networks (GANs).
+We will start the course with a presentation of high performance computing system architectures and the design paradigms for HPC software. In the tutorial, we familiarize the users with the environment. Furthermore, we give a recap of important machine learning concepts and algorithms and the participants will train and test a reference model. Afterward, we introduce how deep learning algorithms can be parallelized for supercomputer usage with Horovod. Furthermore, we discuss best practices and pitfalls in adopting deep learning algorithms on supercomputers and learn to test their function and performance. Finally, we apply the gained expertise to large scale unsupervised learning, with a particular focus on Generative Adversarial Networks (GANs).
 
 ## Information
 
@@ -124,6 +124,6 @@ Therefore, we strongly suggest the workflow of cloning the repo on our supercomp
 
 ## Certificate
 
-The certificate for the course can be found bellow:
+The certificate for the course can be found below:
 
 ["Introduction to Scalable Deep" - Jülich Supercomputing Centre (JSC)](https://github.com/HROlive/Introduction-to-Scalable-Deep-Learning/blob/main/images/certificate.pdf) (Issued On: May 2023)
